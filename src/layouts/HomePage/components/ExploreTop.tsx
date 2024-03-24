@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const ExploreTop = () => {
 
     return (
@@ -6,7 +8,7 @@ export const ExploreTop = () => {
                 <div>
                     <h1 className="display-5 fw-bold">Explore</h1>
                     <p className="col-md-8 fs-4">Explore the world of music and discover new artists, albums, and songs.</p>
-                    <a type="button" className="btn main-color btn-lg text-white" href="#" >Explore top books</a>
+                    <Link type="button" className="btn main-color btn-lg text-white" to="/search" >Explore top books</Link>
                 </div>
 
             </div>
