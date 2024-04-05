@@ -249,38 +249,41 @@ export const BookCheckoutPage = () => {
         if (!response.ok) {
             throw new Error('Something went wrong!');
         }
+
         setCheckout(true);
     }
 
     // review 
-
     async function submitReview(starInput: number, reviewDescription: string) {
+            let bookId: number = 0;
+            if (book?.id) {
+                bookId = book.id;
+            }
 
-        let bookId: number =0;
+            console.log(starInput);
+            console.log(bookId);
+            console.log(reviewDescription);
+    
+            const reviewRequestModel = new ReviewRequestModel(starInput, bookId, reviewDescription);
+            
+            const url = `http://localhost:9090/api/reviews/secure/post/`;
+            
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(reviewRequestModel)
+            };
+            const returnResponse = await fetch(url, requestOptions);
 
-        if (book?.id) {
-            bookId = book.id;
+            if (!returnResponse.ok) {
+                throw new Error('Something went wrong!');
+            }
+
+            setReviewLeft(true);
         }
-
-        const reviewRequestModel = new ReviewRequestModel(starInput, bookId, reviewDescription);
-
-        const url = `http://localhost:9090/api/reviews/secure/post`;
-
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(reviewRequestModel) 
-        };
-
-        const response = await fetch(url, requestOptions);
-        if (!response.ok) {
-            throw new Error('Something went wrong!');
-        }
-        setReviewLeft(true);
-    }
 
 
     return (
@@ -342,7 +345,7 @@ export const BookCheckoutPage = () => {
                 reviewLeft={ReviewLeft} submitReview={submitReview}/>
                 <hr />
 
-                <LatestReviews reviews={reviews} bookId={book?.id} mobile={true} /> n
+                <LatestReviews reviews={reviews} bookId={book?.id} mobile={true} /> 
             </div>
         </div>
     );

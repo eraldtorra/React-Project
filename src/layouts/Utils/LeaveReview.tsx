@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { StarsReview } from "./StarsReview";
+import { useState } from 'react';
+import { StarsReview } from './StarsReview';
 
+export const LeaveReview: React.FC<{ submitReview: any }> = (props) => {
 
-export const LeaveReview: React.FC<{ submitReview: any}> = (props) => {
-    
     const [starInput, setStarInput] = useState(0);
     const [displayInput, setDisplayInput] = useState(false);
     const [reviewDescription, setReviewDescription] = useState('');
@@ -13,11 +12,10 @@ export const LeaveReview: React.FC<{ submitReview: any}> = (props) => {
         setDisplayInput(true);
     }
 
-    
-    return(
-        <div className="dropdown" style={{cursor: 'pointer'}}>
-            <h5 className="dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle='dropdown'> 
-                Leave a Review?
+    return (
+        <div className='dropdown' style={{ cursor: 'pointer' }}>
+            <h5 className='dropdown-toggle' id='dropdownMenuButton1' data-bs-toggle='dropdown'>
+                Leave a review?
             </h5>
             <ul id='submitReviewRating' className='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
                 <li><button onClick={() => starValue(0)} className='dropdown-item'>0 star</button></li>
@@ -53,8 +51,6 @@ export const LeaveReview: React.FC<{ submitReview: any}> = (props) => {
                 </form>
             }
 
-
         </div>
-
     );
 }

@@ -42,12 +42,11 @@ export const CheckoutAndReviewBox: React.FC<{
     function reviewButtonRender() {
         if (props.isAuthenticated && !props.reviewLeft) {
 
-            return (
-                <p>
-                    <LeaveReview  submitReview={props.submitReview}/>
-                </p>
-
-            );
+          return(
+          
+                <LeaveReview submitReview={props.submitReview}/>
+         
+          )
         } else if (props.isAuthenticated && props.reviewLeft) {
             return (
                 <p>
@@ -58,6 +57,7 @@ export const CheckoutAndReviewBox: React.FC<{
         return (
             <div>
                 <hr />
+
                 <p>Sign in to be able to leave a review.</p>
             </div>
         );
