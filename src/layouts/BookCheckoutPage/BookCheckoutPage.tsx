@@ -17,9 +17,13 @@ export const BookCheckoutPage = () => {
     const [loading, setLoading] = useState(true);
     const [httpError, setHttpError] = useState(null);
 
+    // Reviews
     const [reviews, setReviews] = useState<ReviewModel[]>([]);
     const [totalStars, setTotalStars] = useState(0);
     const [isLoadingReviews, setIsLoadingReviews] = useState(true);
+
+    const [ReviewLeft, setReviewLeft] = useState(false);
+    const [LoadingUserReview, setLoadingUserReview] = useState(true);
 
     // Loans Count
     const [currentLoansCount, setCurrentLoansCount] = useState(0);
@@ -69,6 +73,7 @@ export const BookCheckoutPage = () => {
         });
     }, [checkout]);
 
+    // Reviews Effect
 
     useEffect(() => {
         const fetchReviews = async () => {
@@ -114,7 +119,40 @@ export const BookCheckoutPage = () => {
             setIsLoadingReviews(false);
         });
 
-    }, []);
+    }, [ReviewLeft]);
+
+    useEffect(() => {
+
+        const fetchUserReview = async () => {
+            if (authState && authState.isAuthenticated) {
+                const url = `http://localhost:9090/api/reviews/secure/userReviewExists?bookId=${bookId}`;
+
+                const requestOptions = {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `Bearer ${authState.accessToken?.accessToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                };
+                const userReviewResponse = await fetch(url, requestOptions);
+                if (!userReviewResponse.ok) {
+                    throw new Error('Something went wrong!');
+                }
+
+                const userReviewResponseJson = await userReviewResponse.json();
+                setReviewLeft(userReviewResponseJson);
+            }
+            setLoadingUserReview(false);
+        }
+        fetchUserReview().catch((error) => {
+            setHttpError(error.message);
+            setLoadingUserReview(false);
+        });
+
+    });
+
+
+    // Current Loans Effect
 
     useEffect(() => {
         const fetchUserCurrentLoans = async () => {
@@ -180,7 +218,8 @@ export const BookCheckoutPage = () => {
 
 
 
-    if (loading || isLoadingReviews || isLoadingCurrentLoans || isCheckingOutLoading) {
+    if (loading || isLoadingReviews || isLoadingCurrentLoans || isCheckingOutLoading
+        || LoadingUserReview) {
         return (
             <SpinnerLoading />
         );
@@ -238,7 +277,8 @@ export const BookCheckoutPage = () => {
                         </div>
                     </div>
                     <CheckoutAndReviewBox book={book} mobile={false} currentLoansCount={currentLoansCount} 
-                    isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook}/>
+                    isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook}
+                    reviewLeft={ReviewLeft}/>
 
                 </div>
                 <hr />
@@ -267,7 +307,8 @@ export const BookCheckoutPage = () => {
 
                 </div>
                 <CheckoutAndReviewBox book={book} mobile={true} currentLoansCount={currentLoansCount}
-                isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook} />
+                isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook}
+                reviewLeft={ReviewLeft} />
                 <hr />
 
                 <LatestReviews reviews={reviews} bookId={book?.id} mobile={true} /> n
