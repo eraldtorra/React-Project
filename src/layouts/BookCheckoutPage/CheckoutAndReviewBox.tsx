@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import BookModel from "../../models/BookModel";
 
 export const CheckoutAndReviewBox: React.FC<{
