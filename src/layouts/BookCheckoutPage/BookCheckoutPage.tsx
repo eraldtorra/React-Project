@@ -6,6 +6,7 @@ import { CheckoutAndReviewBox } from "./CheckoutAndReviewBox";
 import ReviewModel from "../../models/ReviewModel";
 import { LatestReviews } from "./LatestReviews";
 import { useOktaAuth } from "@okta/okta-react";
+import ReviewRequestModel from "../../models/ReviewRequestModel";
 
 
 export const BookCheckoutPage = () => {
@@ -251,6 +252,36 @@ export const BookCheckoutPage = () => {
         setCheckout(true);
     }
 
+    // review 
+
+    async function submitReview(starInput: number, reviewDescription: string) {
+
+        let bookId: number =0;
+
+        if (book?.id) {
+            bookId = book.id;
+        }
+
+        const reviewRequestModel = new ReviewRequestModel(starInput, bookId, reviewDescription);
+
+        const url = `http://localhost:9090/api/reviews/secure/post`;
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reviewRequestModel) 
+        };
+
+        const response = await fetch(url, requestOptions);
+        if (!response.ok) {
+            throw new Error('Something went wrong!');
+        }
+        setReviewLeft(true);
+    }
+
 
     return (
         <div>
@@ -278,7 +309,7 @@ export const BookCheckoutPage = () => {
                     </div>
                     <CheckoutAndReviewBox book={book} mobile={false} currentLoansCount={currentLoansCount} 
                     isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook}
-                    reviewLeft={ReviewLeft}/>
+                    reviewLeft={ReviewLeft} submitReview={submitReview}/>
 
                 </div>
                 <hr />
@@ -308,7 +339,7 @@ export const BookCheckoutPage = () => {
                 </div>
                 <CheckoutAndReviewBox book={book} mobile={true} currentLoansCount={currentLoansCount}
                 isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook}
-                reviewLeft={ReviewLeft} />
+                reviewLeft={ReviewLeft} submitReview={submitReview}/>
                 <hr />
 
                 <LatestReviews reviews={reviews} bookId={book?.id} mobile={true} /> n
