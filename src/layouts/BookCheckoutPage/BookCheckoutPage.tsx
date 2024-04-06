@@ -72,7 +72,7 @@ export const BookCheckoutPage = () => {
             setHttpError(error.message);
             setLoading(false);
         });
-    }, [checkout]);
+    }, [checkout,bookId]);
 
     // Reviews Effect
 
@@ -120,7 +120,7 @@ export const BookCheckoutPage = () => {
             setIsLoadingReviews(false);
         });
 
-    }, [ReviewLeft]);
+    }, [ReviewLeft,bookId]);
 
     useEffect(() => {
 
@@ -214,7 +214,7 @@ export const BookCheckoutPage = () => {
             setHttpError(error.message);
             setIsCheckingOutLoading(false);
         });
-    }, [authState]);
+    }, [authState,bookId]);
 
 
 
