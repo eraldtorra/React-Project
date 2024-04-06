@@ -255,35 +255,35 @@ export const BookCheckoutPage = () => {
 
     // review 
     async function submitReview(starInput: number, reviewDescription: string) {
-            let bookId: number = 0;
-            if (book?.id) {
-                bookId = book.id;
-            }
-
-            console.log(starInput);
-            console.log(bookId);
-            console.log(reviewDescription);
-    
-            const reviewRequestModel = new ReviewRequestModel(starInput, bookId, reviewDescription);
-            
-            const url = `http://localhost:9090/api/reviews/secure/post/`;
-            
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(reviewRequestModel)
-            };
-            const returnResponse = await fetch(url, requestOptions);
-
-            if (!returnResponse.ok) {
-                throw new Error('Something went wrong!');
-            }
-
-            setReviewLeft(true);
+        let bookId: number = 0;
+        if (book?.id) {
+            bookId = book.id;
         }
+
+        console.log(starInput);
+        console.log(bookId);
+        console.log(reviewDescription);
+
+        const reviewRequestModel = new ReviewRequestModel(starInput, bookId, reviewDescription);
+
+        const url = `http://localhost:9090/api/reviews/secure/post/`;
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reviewRequestModel)
+        };
+        const returnResponse = await fetch(url, requestOptions);
+
+        if (!returnResponse.ok) {
+            throw new Error('Something went wrong!');
+        }
+
+        setReviewLeft(true);
+    }
 
 
     return (
@@ -310,9 +310,9 @@ export const BookCheckoutPage = () => {
                             <StarsReview rating={totalStars} size={32} />
                         </div>
                     </div>
-                    <CheckoutAndReviewBox book={book} mobile={false} currentLoansCount={currentLoansCount} 
-                    isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook}
-                    reviewLeft={ReviewLeft} submitReview={submitReview}/>
+                    <CheckoutAndReviewBox book={book} mobile={false} currentLoansCount={currentLoansCount}
+                        isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook}
+                        reviewLeft={ReviewLeft} submitReview={submitReview} />
 
                 </div>
                 <hr />
@@ -338,14 +338,14 @@ export const BookCheckoutPage = () => {
 
                         <StarsReview rating={totalStars} size={32} />
                     </div>
-
+  
                 </div>
                 <CheckoutAndReviewBox book={book} mobile={true} currentLoansCount={currentLoansCount}
-                isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook}
-                reviewLeft={ReviewLeft} submitReview={submitReview}/>
+                    isAuthenticated={authState?.isAuthenticated} isCheckedOut={checkout} checkoutBook={checkoutBook}
+                    reviewLeft={ReviewLeft} submitReview={submitReview} />
                 <hr />
 
-                <LatestReviews reviews={reviews} bookId={book?.id} mobile={true} /> 
+                <LatestReviews reviews={reviews} bookId={book?.id} mobile={true} />
             </div>
         </div>
     );

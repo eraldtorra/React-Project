@@ -46,6 +46,9 @@ export const App = () => {
         <Route path='/search'>
           <SearchBookPage />
         </Route>
+        <Route path='/reviewlist/:bookId'>
+
+        </Route>
 
         <Route path='/checkout/:bookId'>
           <BookCheckoutPage />
