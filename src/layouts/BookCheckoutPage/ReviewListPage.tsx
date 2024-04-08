@@ -11,7 +11,7 @@ export const ReviewListPage = () => {
     const [httpError, setHttpError] = useState(null);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [reviewsPerPage, setReviewsPerPage] = useState(5);
+    const [reviewsPerPage] = useState(5);
     const [totalReviews, setTotalReviews] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
 
@@ -57,7 +57,7 @@ export const ReviewListPage = () => {
             setLoading(false);
         });
 
-    }, [currentPage]);
+    }, [currentPage, bookId,reviewsPerPage]);
 
     if (loading){
         return(
