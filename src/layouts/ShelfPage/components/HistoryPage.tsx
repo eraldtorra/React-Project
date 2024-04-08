@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Pagination } from "../../Utils/Pagination";
 
 
+
 export const HistoryPage = () => {
     
     const { authState } = useOktaAuth();
@@ -38,6 +39,8 @@ export const HistoryPage = () => {
 
                 setHistories(historyResponseJson._embedded.histories);
                 setTotalPages(historyResponseJson.page.totalPages);
+              
+             
             }
             setIsLoadingHistory(false);
 
@@ -99,7 +102,7 @@ export const HistoryPage = () => {
                                             <p className='card-text'>{history.description}</p>
                                             <hr/>
                                             <p className='card-text'> Checked out on: {history.checkoutDate}</p>
-                                            <p className='card-text'> Returned on: {history.returnDate}</p>
+                                            <p className='card-text'> Returned on: {history.returnedDate}</p>
                                         </div>
                                 </div>
                             </div>
