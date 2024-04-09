@@ -45,7 +45,7 @@ export const Messages = () => {
             setHttpError(error.messages);
         })
         window.scrollTo(0, 0);
-    }, [authState, currentPage]);
+    }, [authState, currentPage, messagesPerPage]);
 
     if (isLoadingMessages) {
         return (

@@ -3,6 +3,7 @@ import BookModel from "../../models/BookModel";
 import { SpinnerLoading } from "../Utils/SpinnerLoading";
 import { SearchBook } from "./components/SearchBook";
 import { Pagination } from "../Utils/Pagination";
+import { Link } from "react-router-dom";
 
 
 export const SearchBookPage = () => {
@@ -11,7 +12,7 @@ export const SearchBookPage = () => {
     const [loading, setLoading] = useState(true);
     const [httpError, setHttpError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [booksPerPage, setBooksPerPage] = useState(5);
+    const [booksPerPage] = useState(5);
     const [totalBooks, setTotalBooks] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [search, setSearch] = useState('');
@@ -20,17 +21,24 @@ export const SearchBookPage = () => {
 
 
     useEffect(() => {
+
         const fetchBooks = async () => {
             const baseurl: string = "http://localhost:9090/api/books";
 
             let url: string = '';
 
-            if (search === '') {
+           
+
+            if (search === '' && categorySelection === 'Book category') {
                 url = `${baseurl}?page=${currentPage - 1}&size=${booksPerPage}`;
+                
             } else {
                 let searchWithPage = searchUrl.replace('<pageNumber>', `${currentPage - 1}`);
 
+              
+                
                 url = baseurl + searchWithPage;
+            
             }
 
 
@@ -76,7 +84,7 @@ export const SearchBookPage = () => {
             setLoading(false);
         });
         window.scrollTo(0, 0);
-    }, [currentPage, searchUrl]);
+    }, [currentPage, searchUrl, search, booksPerPage, categorySelection]);
 
     if (loading) {
         return (
@@ -99,11 +107,11 @@ export const SearchBookPage = () => {
         } else {
             setSearchUrl(`/search/findByTitleContaining?title=${search}&page=<pageNumber>&size=${booksPerPage}`)
         }
-
         setCategorySelection('Book category');
     }
 
     const categoryField = (value: string) => {
+       
         setCurrentPage(1);
         if(
             value.toLowerCase() === 'fe' ||
@@ -112,7 +120,10 @@ export const SearchBookPage = () => {
             value.toLowerCase() === 'data'
         ){
             setCategorySelection(value);
-            setSearchUrl(`/search/findByCategory?category=${value}&page=<pageNumber>&size=${booksPerPage}`);
+         
+            let newSearchUrl = `/search/findByCategory?category=${value}&page=<pageNumber>&size=${booksPerPage}`;
+            setSearchUrl(newSearchUrl);
+        
         }else{
             setCategorySelection('All');
             setSearchUrl(`?page=<pageNumber>&size='${booksPerPage}`);
@@ -149,19 +160,19 @@ export const SearchBookPage = () => {
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li onClick={() => categoryField('All')}>
-                                        <a className="dropdown-item" href="#">All</a>
+                                        <p className="dropdown-item" >All</p>
                                     </li>
-                                    <li onClick={() => categoryField('fe')}>
-                                        <a className="dropdown-item" href="#">Front End</a>
+                                    <li onClick={() => categoryField('FE')}>
+                                        <p className="dropdown-item" >Front End</p>
                                     </li>
                                     <li onClick={() => categoryField('be')}>
-                                        <a className="dropdown-item" href="#">Back End</a>
+                                        <p className="dropdown-item" >Back End</p>
                                     </li>
                                     <li onClick={() => categoryField('devops')}>
-                                        <a className="dropdown-item" href="#">DevOps</a>
+                                        <p className="dropdown-item" >DevOps</p>
                                     </li>
-                                    <li onClick={() => categoryField('data')}>
-                                        <a className="dropdown-item" href="#">Data</a>
+                                    <li onClick={() => categoryField('Data')}>
+                                        <p className="dropdown-item" >Data</p>
                                     </li>
                                 </ul>
                             </div>
@@ -187,10 +198,10 @@ export const SearchBookPage = () => {
                             <h4>
                                 Can't find what you are looking for?
                             </h4>
-                            <a type="button" className="btn main-color btn-md px-3 me-md-2 fw-bold text-white"
-                                href="#">
+                            <Link type="button" className="btn main-color btn-md px-3 me-md-2 fw-bold text-white"
+                                to="/messages">
                                 Library Service
-                            </a>
+                            </Link>
                         </div>
                     }
 
