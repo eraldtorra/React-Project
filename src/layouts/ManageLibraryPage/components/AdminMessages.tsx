@@ -54,7 +54,7 @@ export const AdminMessages = () => {
             setHttpError(error.message);
         })
         window.scrollTo(0, 0);
-    }, [authState, currentPage, btnSubmit]);
+    }, [authState, currentPage, btnSubmit, messagesPerPage]);
 
     if (isLoadingMessages) {
         return (
