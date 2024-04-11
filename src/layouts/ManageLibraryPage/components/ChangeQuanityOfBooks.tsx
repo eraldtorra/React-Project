@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookModel from "../../../models/BookModel";
+import { SpinnerLoading } from "../../Utils/SpinnerLoading";
+import { Pagination } from "../../Utils/Pagination";
 
 
 export const ChangeQuantityOfBooks = () => {
@@ -16,7 +18,7 @@ export const ChangeQuantityOfBooks = () => {
 
     useEffect(() => {
         const fetchBooks = async () => {
-            const baseUrl: string = `http://localhost:8080/api/books?page=${currentPage - 1}&size=${booksPerPage}`;
+            const baseUrl: string = `http://localhost:9090/api/books?page=${currentPage - 1}&size=${booksPerPage}`;
 
             const response = await fetch(baseUrl);
 
@@ -88,9 +90,9 @@ export const ChangeQuantityOfBooks = () => {
                     <p>
                         {indexOfFirstBook + 1} to {lastItem} of {totalAmountOfBooks} items: 
                     </p>
-                    {books.map(book => (
+                    {/* {books.map(book => (
                        <ChangeQuantityOfBook book={book} key={book.id} deleteBook={deleteBook}/>
-                    ))}
+                    ))} */}
                 </>
                 :
                 <h5>Add a book before changing quantity</h5>
