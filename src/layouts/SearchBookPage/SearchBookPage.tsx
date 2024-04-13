@@ -23,7 +23,7 @@ export const SearchBookPage = () => {
     useEffect(() => {
 
         const fetchBooks = async () => {
-            const baseurl: string = "http://localhost:9090/api/books";
+            const baseurl: string = `${process.env.REACT_APP_API}/books`;
 
             let url: string = '';
 
