@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import {App} from './App';
 import {BrowserRouter} from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+
+
+const stripePromise = loadStripe('pk_test_51OaIyZLzXbCAJPJPPb2tBF1UdjAUkSuY4hrPHyP49YWhsdUzThld92gQWVSRtfUNSnv0D3BEq0n9nLSqOyuQwxpY00J4GBe0Ks'); // Add your stripe public key here
 
 
 const root = ReactDOM.createRoot(
@@ -10,7 +15,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
+    <Elements stripe={stripePromise}>
     <App />
+    </Elements>
   </BrowserRouter>
 );
 
