@@ -252,7 +252,7 @@ export const BookCheckoutPage = () => {
         if (!response.ok) {
             setDisplayError(true);
             throw new Error('Something went wrong!');
-        }
+        }   
 
         setDisplayError(false);
         setCheckout(true);
