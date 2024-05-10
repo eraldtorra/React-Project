@@ -249,9 +249,11 @@ export const BookCheckoutPage = () => {
 
         const response = await fetch(url, requestOptions);
 
-        if (!response.ok) {
-            setDisplayError(true);
-            throw new Error('Something went wrong!');
+        if (response.status === 500) {
+            setDisplayError(true)
+            
+            return;
+            
         }   
 
         setDisplayError(false);

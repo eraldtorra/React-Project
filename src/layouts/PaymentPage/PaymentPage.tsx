@@ -23,7 +23,7 @@ export const PaymentPage = () => {
                 };
                 const paymentResponse = await fetch(url, requestOptions);
                 if (!paymentResponse.ok) {
-                    throw new Error('Something went wrong!')
+                    throw new Error('Nuk ke per te paguar!')
                 }
                 const paymentResponseJson = await paymentResponse.json();
                 setFees(paymentResponseJson.amount);

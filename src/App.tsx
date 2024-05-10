@@ -15,6 +15,7 @@ import { ShelfPage } from './layouts/ShelfPage/ShelfPage';
 import { MessagesPage } from './layouts/MessagesPage/MessagesPage';
 import { ManageLibraryPage } from './layouts/ManageLibraryPage/ManageLibraryPage';
 import { PaymentPage } from './layouts/PaymentPage/PaymentPage';
+import { ForumPage } from './layouts/ForumPage/Forumpage';
 
 const oktaAuth = new OktaAuth(oktaConfig);
 
@@ -76,6 +77,10 @@ export const App = () => {
         <SecureRoute path='/fees'>
          <PaymentPage />
         </SecureRoute>
+
+        <Route path='/forum'>
+          <ForumPage/>
+        </Route>
 
       </Switch>
       </div>
