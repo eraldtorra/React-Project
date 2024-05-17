@@ -3,9 +3,12 @@ import ThreadModel from "../../models/ThreadModel";
 import { SpinnerLoading } from "../Utils/SpinnerLoading";
 import { Pagination } from "../Utils/Pagination";
 import { Threads } from "./Threads";
+import { useOktaAuth } from "@okta/okta-react";
 
 
 export const ForumPage = () => {
+
+    const { authState } = useOktaAuth();
 
     const [threads, setThreads] = useState<ThreadModel[]>([]);
     const [loading, setLoading] = useState(true);
@@ -78,9 +81,7 @@ export const ForumPage = () => {
         );
     }
 
-    const indexOfLastBook: number = currentPage * threadsPerPage;
-    const indexOfFirstBook: number = indexOfLastBook - threadsPerPage;
-    let lastItem = threadsPerPage * currentPage <= totalThreads ? threadsPerPage * currentPage : totalPages;
+   
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -90,14 +91,22 @@ export const ForumPage = () => {
         <div>
             <div className="container">
                 <div>
-                <div>
-                            <div className="mt-3">
-                                <h5>Number of results: ({totalPages})</h5>
 
-                            </div>
-                            <p>
-                                {indexOfFirstBook + 1} to {lastItem} of {totalPages} items:
-                            </p>
+                    {/*sent to center */}
+
+                    <h1 className="mt-3 ">
+                        Forum
+                    </h1>
+                    {authState?.isAuthenticated &&
+                    <div className="d-flex justify-content-end">
+                    <a href="/add-thread" className="btn btn-md main-color text-white">
+                        Add Thread
+                    </a>
+                </div>
+                }
+                <div>
+                
+                            
 
                             {threads.map(thread =>(
                                 <Threads key={thread.id} thread={thread} />

@@ -110,7 +110,7 @@ export const ChangeQuantityOfBook: React.FC<{ book: BookModel, deleteBook: any }
                         <button className='m-1 btn btn-md btn-danger' onClick={deleteBook}>Delete</button>
                     </div>
                 </div>
-                <button className='m1 btn btn-md main-color text-white' onClick={increaseQuantity}>Add Quantity</button>
+                <button className='m1 btn btn-md main-color text-white buttonChange' onClick={increaseQuantity}>Add Quantity</button>
                 <button className='m1 btn btn-md btn-warning' onClick={decreaseQuantity}>Decrease Quantity</button>
             </div>
         </div>

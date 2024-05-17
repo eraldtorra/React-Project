@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.my-custom-card-class {
+  margin: 20px;
+}
+
+.my-custom-h3-class {
+  color: red;
+}

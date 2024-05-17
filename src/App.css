@@ -3,7 +3,7 @@
 }
 
 .header {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url("./Images/PublicImages/image-2.jpg");
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url("./Images/PublicImages/image.jpeg");
     opacity: var(--mainOpacity);
     height: 25em !important;
 }
@@ -18,23 +18,32 @@
   }
 
 .main-color {
-background-color: #0e76a8 ;
+background-color: #495761 ;
 }
 
 .col-image-left {
-    background-image: url("./Images/PublicImages/image-4.jpg");
-    height: 25em !important;
+    background-image: url("./Images/PublicImages/Look\ inside\ Oslo’s\ stunning\ new\ public\ library\,\ now\ open\ to\ the\ public_\ 1.png") ;
+    background-repeat: no-repeat ;
+    background-size: contain;
+    height: 370px;
+    width: 800px;
+    
 }
 
 .col-image-right {
     background-image: url("./Images/PublicImages/image-1.jpg");
-    height: 25em !important;
+    background-repeat: no-repeat ;
+    background-size: contain;
+    height: 370px;
+    width: 800px;
 }
 
 .lost-image {
-    background-image: url("./Images/PublicImages/image-3.jpg");
-    height: 25em !important;
-    width: "720"
+    background-image: url("./Images/PublicImages/Historic\ Library\ Hall\ School\ Backdrop\ for\ Photography\ SBH0368.jpeg");
+    background-repeat: no-repeat ;
+    background-size: contain;
+    height: 28em !important;
+    width:360px;
 }
 
 .homepage-carousel-title {
@@ -98,6 +107,8 @@ background-color: #0e76a8 ;
     fill: rgb(255, 255, 255);
     animation: slide-in-top 1s linear infinite;
   }
+
+
   
   @keyframes slide-in-top {
     0% {
@@ -110,4 +121,5 @@ background-color: #0e76a8 ;
       opacity: 1;
     }
   }
+
   

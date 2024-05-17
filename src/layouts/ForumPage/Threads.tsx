@@ -1,5 +1,6 @@
 import React from "react";
 import ThredModel from "../../models/ThreadModel";
+import { Link } from "react-router-dom";
 
 
 
@@ -25,9 +26,9 @@ export const Threads: React.FC<{thread: ThredModel}> = (props) => {
 
             </div>
             <div className="col-md-4 d-flex justify-content-center align-items-center">
-                {/* <Link to={`/checkout/${props.book.id}`} className="btn btn-md main-color text-white">
+                <Link to={`/message/${props.thread.id}`} className="btn btn-md main-color text-white">
                     View Details
-                </Link> */}
+                </Link>
 
             </div>
         </div>

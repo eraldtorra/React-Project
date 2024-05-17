@@ -16,6 +16,8 @@ import { MessagesPage } from './layouts/MessagesPage/MessagesPage';
 import { ManageLibraryPage } from './layouts/ManageLibraryPage/ManageLibraryPage';
 import { PaymentPage } from './layouts/PaymentPage/PaymentPage';
 import { ForumPage } from './layouts/ForumPage/Forumpage';
+import { ForumMessagePage } from './layouts/ForumPage/ForumMessagePage';
+
 
 const oktaAuth = new OktaAuth(oktaConfig);
 
@@ -39,7 +41,7 @@ export const App = () => {
       <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri} onAuthRequired={customAuthHandler}>
       <Navbar />
 
-    <div className='flex-grow-1'>
+    <React.Fragment >
       <Switch>
         <Route path='/' exact>
           <Redirect to='/home' />
@@ -81,9 +83,13 @@ export const App = () => {
         <Route path='/forum'>
           <ForumPage/>
         </Route>
+        
+        <Route path= '/message/:threadId'>
+          <ForumMessagePage/>
+        </Route>
 
       </Switch>
-      </div>
+      </React.Fragment>
 
       <Footer />
       </Security>
