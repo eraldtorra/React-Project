@@ -47,7 +47,7 @@ export const Heros = () => {
                         </div>
 
                     </div>
-                    <div className="col-sm-6 col-md-6">
+                    <div className="col-sm-6 col-md-6 ">
                         <div className="col-image-right"></div>
                     </div>
                 </div>

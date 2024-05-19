@@ -25,9 +25,9 @@ background-color: #495761 ;
     background-image: url("./Images/PublicImages/Look\ inside\ Oslo’s\ stunning\ new\ public\ library\,\ now\ open\ to\ the\ public_\ 1.png") ;
     background-repeat: no-repeat ;
     background-size: contain;
-    height: 370px;
+    height: 24em! important;
     width: 800px;
-    
+    margin-left: 100px;
 }
 
 .col-image-right {
@@ -36,6 +36,7 @@ background-color: #495761 ;
     background-size: contain;
     height: 370px;
     width: 800px;
+    margin-left: 150px;
 }
 
 .lost-image {
@@ -43,7 +44,7 @@ background-color: #495761 ;
     background-repeat: no-repeat ;
     background-size: contain;
     height: 28em !important;
-    width:360px;
+    width:306px;
 }
 
 .homepage-carousel-title {
