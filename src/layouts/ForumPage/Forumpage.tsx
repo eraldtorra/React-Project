@@ -107,10 +107,13 @@ export const ForumPage = () => {
                 <div>
                 
                             
-
-                            {threads.map(thread =>(
-                                <Threads key={thread.id} thread={thread} />
-                            ))}
+                            {threads === undefined || threads.length === 0 ?
+                                <h5>No threads found</h5>
+                                :
+                                threads.map(thread =>(
+                                    <Threads key={thread.id} thread={thread} />
+                                ))
+                            }
 
                         </div>
 
