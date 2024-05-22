@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StarsReview } from './StarsReview';
 
+
 export const LeaveReview: React.FC<{ submitReview: any }> = (props) => {
 
     const [starInput, setStarInput] = useState(0);
@@ -30,27 +31,30 @@ export const LeaveReview: React.FC<{ submitReview: any }> = (props) => {
                 <li><button onClick={() => starValue(4.5)} className='dropdown-item'>4.5 star</button></li>
                 <li><button onClick={() => starValue(5)} className='dropdown-item'>5 star</button></li>
             </ul>
-            <StarsReview rating={starInput} size={32}/>
 
-            {displayInput && 
-                <form method='POST' action='#'>
-                    <hr/>
 
-                    <div className='mb-3'>
-                        <label className='form-label'>
-                            Description
-                        </label>
-                        <textarea className='form-control' id='submitReviewDescription' placeholder='Optional'
-                            rows={3} onChange={e => setReviewDescription(e.target.value)}>
-                        </textarea>
-                    </div>
 
-                    <div>
-                        <button type='button' onClick={() => props.submitReview(starInput, reviewDescription)} className='btn btn-primary mt-3'>Submit Review</button>
-                    </div>
-                </form>
-            }
+                                <StarsReview rating={starInput} size={32} />
 
-        </div>
-    );
+                                {displayInput &&
+                                    <form method='POST' action='#'>
+                                        <hr />
+
+                                        <div className='mb-3'>
+                                            <label className='form-label'>
+                                                Description
+                                            </label>
+                                            <textarea className='form-control' id='submitReviewDescription' placeholder='Optional'
+                                                rows={3} onChange={e => setReviewDescription(e.target.value)}>
+                                            </textarea>
+                                        </div>
+
+                                        <div>
+                                            <button type='button' onClick={() => props.submitReview(starInput, reviewDescription)} className='btn btn-primary mt-3'>Submit Review</button>
+                                        </div>
+                                    </form>
+                                }
+
+                            </div>
+                            );
 }

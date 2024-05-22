@@ -18,11 +18,20 @@ const LoginWidget = ({config}) =>{
         return(<SpinnerLoading/>)
     }
 
+      // Add features.registration in the config object
+  config.features = {
+    ...config.features,
+    registration: true, // Enable self-service registration
+  };
+
     return authState.isAuthenticated ? (
         <Redirect to={{pathname: "/"}}/>
     ) : (
       <OktaSignInWidget config={config} onSuccess={onSuccess} onError={onError}/>
     );
+
+    
+
 }
 
 export default LoginWidget;

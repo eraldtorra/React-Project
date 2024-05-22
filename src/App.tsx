@@ -17,6 +17,8 @@ import { ManageLibraryPage } from './layouts/ManageLibraryPage/ManageLibraryPage
 import { PaymentPage } from './layouts/PaymentPage/PaymentPage';
 import { ForumPage } from './layouts/ForumPage/Forumpage';
 import { ForumMessagePage } from './layouts/ForumPage/ForumMessagePage';
+import { NotFound } from './layouts/Utils/NotFound';
+
 
 
 const oktaAuth = new OktaAuth(oktaConfig);
@@ -62,6 +64,7 @@ export const App = () => {
           <BookCheckoutPage />
         </Route>
         <Route path='/login' render={() => <LoginWidget config={oktaConfig} />} />
+       
         <Route path='/login/callback' component={LoginCallback} />
 
         <SecureRoute path="/shelf">
@@ -87,6 +90,8 @@ export const App = () => {
         <Route path= '/message/:threadId'>
           <ForumMessagePage/>
         </Route>
+
+        <Route component={NotFound} />
 
       </Switch>
       </React.Fragment>

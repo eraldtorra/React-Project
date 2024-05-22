@@ -1,0 +1,12 @@
+.welcome-message {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    padding: 10px;
+    border-radius: 5px;
+    animation: fadeIn 2s;
+  }
+  
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
