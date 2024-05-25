@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@okta/okta-react": "^6.4.3",
     "@okta/okta-signin-widget": "^6.3.3",
     "@stripe/react-stripe-js": "^1.9.0",
@@ -17,6 +20,7 @@
     "axios": "^1.6.8",
     "bootstrap-icons": "^1.11.3",
     "file-saver": "^2.0.5",
+    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4",

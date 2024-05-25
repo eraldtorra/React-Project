@@ -93,23 +93,14 @@ export const ForumMessagePage = () => {
                         <div className="mt-3">
                             <h2>Forum Messages</h2>
                         </div>
-
-
-
-                        {forumMessages.map(ForumMessage => (
+                        {forumMessages.length === 0?
+                         <h5>No messages found</h5>
+                            :
+                        forumMessages.map(ForumMessage => (
                             <ForumMessages key={ForumMessage.id} forumMessage={ForumMessage} />
                         ))}
                     </div>
-
-
-                   
-
-
                 </div>
-
-
-
-
             </div>
 
         </div>

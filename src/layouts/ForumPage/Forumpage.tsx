@@ -4,6 +4,7 @@ import { SpinnerLoading } from "../Utils/SpinnerLoading";
 import { Pagination } from "../Utils/Pagination";
 import { Threads } from "./Threads";
 import { useOktaAuth } from "@okta/okta-react";
+import { Link } from "react-router-dom";
 
 
 export const ForumPage = () => {
@@ -43,7 +44,7 @@ export const ForumPage = () => {
 
             const loadedThreads: ThreadModel[] = [];
 
-           
+
 
             for (const key in responseData) {
                 loadedThreads.push(
@@ -81,7 +82,7 @@ export const ForumPage = () => {
         );
     }
 
-   
+
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -98,24 +99,24 @@ export const ForumPage = () => {
                         Forum
                     </h1>
                     {authState?.isAuthenticated &&
-                    <div className="d-flex justify-content-end">
-                    <a href="/add-thread" className="btn btn-md main-color text-white">
-                        Add Thread
-                    </a>
-                </div>
-                }
-                <div>
-                
-                            
-                            {threads === undefined || threads.length === 0 ?
-                                <h5>No threads found</h5>
-                                :
-                                threads.map(thread =>(
-                                    <Threads key={thread.id} thread={thread} />
-                                ))
-                            }
-
+                        <div className="d-flex justify-content-end">
+                            <Link to="thread/add" className="btn btn-md main-color text-white">
+                                Add Thread
+                            </Link>
                         </div>
+                    }
+                    <div>
+
+
+                        {threads === undefined || threads.length === 0 ?
+                            <h5>No threads found</h5>
+                            :
+                            threads.map(thread => (
+                                <Threads key={thread.id} thread={thread} />
+                            ))
+                        }
+
+                    </div>
 
 
                     {totalPages > 1 &&

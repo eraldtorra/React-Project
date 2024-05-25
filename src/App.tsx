@@ -18,6 +18,8 @@ import { PaymentPage } from './layouts/PaymentPage/PaymentPage';
 import { ForumPage } from './layouts/ForumPage/Forumpage';
 import { ForumMessagePage } from './layouts/ForumPage/ForumMessagePage';
 import { NotFound } from './layouts/Utils/NotFound';
+import { AddThreads } from './layouts/ForumPage/AddThreads';
+import { ProfilePage } from './layouts/Profile/Profilepage';
 
 
 
@@ -90,6 +92,14 @@ export const App = () => {
         <Route path= '/message/:threadId'>
           <ForumMessagePage/>
         </Route>
+
+        <SecureRoute path='/thread/add'>
+          <AddThreads/>
+        </SecureRoute>
+
+        <SecureRoute path='/profile'>
+          <ProfilePage/>
+        </SecureRoute>
 
         <Route component={NotFound} />
 

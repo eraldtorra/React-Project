@@ -1,4 +1,4 @@
-import { Link, NavLink, Redirect } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
 import { SpinnerLoading } from "../Utils/SpinnerLoading";
 import { useEffect, useState } from "react";
@@ -84,9 +84,9 @@ export const Navbar = () => {
             {/* Other nav items... */}
             {authState.isAuthenticated && (
               <li className="nav-item">
-                <a className="nav-link" href="https://dev-61036179.okta.com/app/UserHome" target="_blank" rel="noopener noreferrer">
+                <Link className="nav-link" to='/profile' >
                   Dashboard
-                </a>
+                </Link>
               </li>
             )}
             {/* Other nav items... */}
