@@ -8,10 +8,7 @@ A React project is a web application that uses React, a popular TypeScript libra
 - [Learn More](#learn-more)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-- [Acknowledgments](#acknowledgments)
+
 
 ## Getting Started
 
