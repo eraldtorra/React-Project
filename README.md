@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-A React project is a web application that uses React.js, a popular JavaScript library for building user interfaces, particularly single page applications where you need a fast, interactive user interface.
+A React project is a web application that uses React.js, a popular TypeScript library for building user interfaces, particularly single page applications where you need a fast, interactive user interface.
 
 In a React project, you build your UI out of components, which are JavaScript classes or functions that optionally accept inputs, i.e., properties (props), and return a React element that describes how a section of the UI should appear.
 
